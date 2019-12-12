@@ -10,7 +10,9 @@ module.exports = {
 };
 
 function find() {
-    return db('schemes');
+    return db
+    .select('*')
+    .from('schemes');
 }
 
 function findById(id) {
@@ -20,9 +22,11 @@ function findById(id) {
 }
 
 function findSteps(id) {
-    return db("schemes")
-        .where({ id })
-        .first();
+    return db
+      .select('*')
+      .from('schemes')
+      .innerJoin('steps', 'schemes.id', 'steps.scheme_id')
+      .where('schemes.id', id)
 }
 
 function add(scheme) {
