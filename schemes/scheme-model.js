@@ -29,6 +29,12 @@ function findSteps(id) {
       .where('schemes.id', id)
 }
 
+function addStep(step, scheme_id) {
+  return db
+    .where('id', shceme_id)
+    .insert(step, scheme_id)
+}
+
 function add(scheme) {
     return db("schemes")
         .insert(scheme, "id")
